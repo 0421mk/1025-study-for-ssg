@@ -2,4 +2,5 @@
 bin
 .classpath
 .project
+.gitignore
 README.md
