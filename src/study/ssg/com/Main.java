@@ -3,6 +3,7 @@ package study.ssg.com;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import study.ssg.com.util.Util;
 
 public class Main {
 	public static void main(String[] args) {
@@ -71,6 +72,7 @@ public class Main {
 
 				if (foundArticle != null) {
 					System.out.printf("번호: %d\n", foundArticle.articleId);
+					System.out.printf("작성날짜: %s\n", foundArticle.regDate);
 					System.out.printf("제목: %s\n", foundArticle.title);
 					System.out.printf("내용: %s\n", foundArticle.body);
 					System.out.println("===========");
@@ -162,7 +164,6 @@ public class Main {
 				}
 				
 			} else if (command.equals("system exit")) {
-				System.out.println("system exit");
 				break;
 			} else {
 				System.out.println("잘못된 명령어입니다.");
@@ -182,11 +183,13 @@ class Article {
 	int articleId;
 	String title;
 	String body;
+	String regDate;
 
 	Article(String title, String body) {
 		this.title = title;
 		this.body = body;
 		this.index++;
 		this.articleId = this.index;
+		this.regDate = Util.getNowDateStr();
 	}
 }
