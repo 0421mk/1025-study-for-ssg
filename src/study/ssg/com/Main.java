@@ -123,8 +123,44 @@ public class Main {
 					continue;
 				}
 
-			} else if (command.equals("article delete")) {
-				System.out.println("article delete");
+			} else if (command.startsWith("article delete ")) {
+				
+				String input = command.substring("article delete ".length()).trim();
+
+				if (input.equals("")) {
+					System.out.println("숫자를 입력해주세요.");
+					continue;
+				}
+
+				// 정수인지 확인하는 정규표현식으로 문자열 검토
+				boolean cmdCheck = input.matches("-?\\d+");
+
+				int foundId = 0;
+				if (cmdCheck) {
+					foundId = Integer.parseInt(input);
+				} else {
+					System.out.println("숫자를 입력해주세요.");
+					continue;
+				}
+
+				Article foundArticle = null;
+
+				for (Article article : articles) {
+					if (article.articleId == foundId) {
+						foundArticle = article;
+					}
+				}
+				
+				if (foundArticle != null) {
+					
+					articles.remove(foundArticle);
+
+					System.out.println(foundArticle.articleId + "번 게시물이 삭제되었습니다.");
+				} else {
+					System.out.println(foundId + "번 게시물이 존재하지 않습니다.");
+					continue;
+				}
+				
 			} else if (command.equals("system exit")) {
 				System.out.println("system exit");
 				break;
