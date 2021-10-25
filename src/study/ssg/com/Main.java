@@ -41,6 +41,38 @@ public class Main {
 					System.out.printf("%4d / %10s\n", article.articleId, article.title);
 				}
 
+			} else if (command.startsWith("article detail ")) {
+				
+				command = command.substring("article detail ".length());
+				
+				if(command.equals("")) {
+					System.out.println("숫자를 입력해주세요.");
+					continue;
+				}
+				
+				// 정수인지 확인하는 정규표현식으로 문자열 검토
+				boolean cmdCheck = command.matches("[+-]?\\d*(\\.\\d+)?");
+				
+				int foundId = 0;
+				if(cmdCheck) {
+					foundId = Integer.parseInt(command);
+				} else {
+					System.out.println("숫자를 입력해주세요.");
+					continue;
+				}
+								
+				for(Article article : articles) {
+					if(article.articleId == foundId) {
+						System.out.printf("번호: %d\n", article.articleId);
+						System.out.printf("제목: %s\n", article.title);
+						System.out.printf("내용: %s\n", article.body);
+						System.out.println("===========");
+					} else {
+						System.out.println(foundId + "번 게시물이 존재하지 않습니다.");
+						continue;
+					}
+				}
+								
 			} else if (command.equals("article modify")) {
 				System.out.println("article modify");
 			} else if (command.equals("article delete")) {
