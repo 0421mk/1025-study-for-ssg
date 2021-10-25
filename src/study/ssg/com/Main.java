@@ -8,16 +8,27 @@ public class Main {
 		System.out.println("==== 프로그램 시작 ====");
 		Scanner scanner = new Scanner(System.in);
 		
-		System.out.printf("명령어 입력: ");
-		String command = scanner.nextLine();
+		while(true) {
+			System.out.printf("명령어 입력: ");
+			String command = scanner.nextLine();
+			
+			if(command.equals("article list")) {
+				System.out.println("article list");
+			} else if(command.equals("article write")) {
+				System.out.println("article write");
+			} else if(command.equals("article modify")) {
+				System.out.println("article modify");
+			} else if(command.equals("article delete")) {
+				System.out.println("article delete");
+			} else if(command.equals("system exit")) {
+				System.out.println("system exit");
+				break;
+			} else {
+				System.out.println("잘못된 명령어입니다.");
+			}
+		}
 		
-		System.out.println(command);
 		System.out.println("==== 프로그램 끝 ====");
-		
-		// SSG 게시판, 회원 기능이 들어간 프로그램
-		// 게시판은 읽기, 쓰기, 수정, 삭제, 페이징 기능 구현
-		// 회원은 회원가입, 로그인
-		// 리팩토링 => 코드를 잘게 쪼개는, 하나의 파일을 여러개의 메서드화 시키는 작업
 		
 	}
 }
