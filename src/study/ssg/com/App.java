@@ -66,13 +66,7 @@ public class App {
 					continue;
 				}
 
-				Article foundArticle = null;
-
-				for (Article article : articles) {
-					if (article.articleId == foundId) {
-						foundArticle = article;
-					}
-				}
+				Article foundArticle = getFoundArticleById(foundId);
 
 				if (foundArticle != null) {
 					System.out.printf("번호: %d\n", foundArticle.articleId);
@@ -105,13 +99,7 @@ public class App {
 					continue;
 				}
 
-				Article foundArticle = null;
-
-				for (Article article : articles) {
-					if (article.articleId == foundId) {
-						foundArticle = article;
-					}
-				}
+				Article foundArticle = getFoundArticleById(foundId);
 
 				if (foundArticle != null) {
 					System.out.printf("제목: ");
@@ -149,13 +137,7 @@ public class App {
 					continue;
 				}
 
-				Article foundArticle = null;
-
-				for (Article article : articles) {
-					if (article.articleId == foundId) {
-						foundArticle = article;
-					}
-				}
+				Article foundArticle = getFoundArticleById(foundId);
 
 				if (foundArticle != null) {
 
@@ -183,5 +165,17 @@ public class App {
 		articles.add(new Article("title1", "body1"));
 		articles.add(new Article("title2", "body2"));
 		articles.add(new Article("title3", "body3"));
+	}
+	
+	private Article getFoundArticleById(int foundId) {
+		Article foundArticle = null;
+		
+		for (Article article : articles) {
+			if (article.articleId == foundId) {
+				foundArticle = article;
+			}
+		}
+		
+		return foundArticle;
 	}
 }
