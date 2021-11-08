@@ -2,21 +2,23 @@ package study.ssg.com.dto;
 
 import study.ssg.com.util.Util;
 
-public class Article extends Dto {
+public class Member extends Dto {
 	// static 힙 메모리로 들어가면서
 	// 처음 선언된 딱 한번만 초기화가 된다.
 	// 그 뒤로는 값이 누적
 	public static int index = 0;
-	public int articleId;
-	public String title;
-	public String body;
+	public int memberId;
+	public String loginId;
+	public String loginPw;
+	public String name;
 	public String regDate;
 
-	public Article(String title, String body) {
-		this.title = title;
-		this.body = body;
+	public Member(String loginId, String loginPw, String name) {
+		this.loginId = loginId;
+		this.loginPw = loginPw;
+		this.name = name;
 		this.index++;
-		this.articleId = this.index;
+		this.memberId = this.index;
 		this.regDate = Util.getNowDateStr();
 	}
 }
