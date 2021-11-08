@@ -14,18 +14,21 @@ public class ArticleController extends Controller {
 	}
 
 	public void doWrite() {
-
+		// view
 		System.out.printf("제목: ");
 		String title = scanner.nextLine();
 
 		System.out.printf("내용: ");
 		String body = scanner.nextLine();
+		// view
 
-		Article article = new Article(title, body);
-		articles.add(article);
+		// Controller -> title, body를 받았다는 것을 인지
+		// 전처리 -> 행위를 하는 것 -> Service
+		Article article = new Article(title, body); // dto(Database Transfer Object)
+		articles.add(article); // dao(Database Access Object)
 
+		// view
 		System.out.println(article.articleId + "번 게시물이 생성되었습니다.");
-
 	}
 
 	public void showList(String command) {
