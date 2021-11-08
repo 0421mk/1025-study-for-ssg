@@ -6,12 +6,14 @@ import java.util.Scanner;
 import study.ssg.com.util.Util;
 
 public class Main {
-	public static void main(String[] args) {
-
-		List<Article> articles = new ArrayList<>();
+	static List<Article> articles = new ArrayList<>();
+	
+	public static void main(String[] args) {	
 
 		System.out.println("==== 프로그램 시작 ====");
 		Scanner scanner = new Scanner(System.in);
+		
+		makeTestData();
 
 		while (true) {
 			System.out.printf("명령어 입력: ");
@@ -172,6 +174,14 @@ public class Main {
 
 		System.out.println("==== 프로그램 끝 ====");
 
+	}
+	
+	private static void makeTestData() {
+		System.out.println("테스트 데이터를 생성합니다.");
+		
+		articles.add(new Article("title1", "body1"));
+		articles.add(new Article("title2", "body2"));
+		articles.add(new Article("title3", "body3"));
 	}
 }
 
