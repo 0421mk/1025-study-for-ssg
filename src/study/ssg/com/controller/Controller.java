@@ -7,6 +7,7 @@ import study.ssg.com.dto.Article;
 import study.ssg.com.dto.Member;
 
 public abstract class Controller {
+	public Member loginedMember;
 	public List<Article> articles;
 	public List<Member> members;
 	

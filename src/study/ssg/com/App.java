@@ -13,9 +13,10 @@ import study.ssg.com.dto.Member;
 public class App {
 	
 	Scanner scanner = new Scanner(System.in);
+	// articleController의 부모 컨트롤러가 이 프로그램에서는 최상단 컨트롤러, 즉 진짜 컨트롤러
+	// 하지만 더 최상단 컨트롤러를 만든다면 바뀔 수 있다.
 	private ArticleController articleController = new ArticleController(scanner);
 	private MemberController memberController = new MemberController(scanner);
-	
 	
 	public void start() {
 		System.out.println("==== 프로그램 시작 ====");
