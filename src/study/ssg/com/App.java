@@ -34,15 +34,38 @@ public class App {
 
 				System.out.println(article.articleId + "번 게시물이 생성되었습니다.");
 
-			} else if (command.equals("article list")) {
-
+			} else if (command.startsWith("article list")) {
+				// article list => 목록 출력
+				// article list {keyword} => keyword 포함 목록 출력
 				if (articles.size() == 0) {
 					System.out.println("게시물이 존재하지 않습니다.");
 					continue;
 				}
 
+				String input = command.substring("article list".length()).trim();
+				
+				int inputSize = input.length();
+				List<Article> foundArticles = new ArrayList<>();
+				// foundArticles는 태생부터 리스트
+				// 게시물이 없는 경우 null로 체크하는 것이 아니라 size() == 0으로 체크해야 함
+				
+				if(inputSize == 0) {
+					foundArticles = articles;
+				} else {
+					for(Article article : articles) {
+						if(article.title.contains(input)) {
+							foundArticles.add(article);
+						}
+					}
+				}
+				
+				if(foundArticles.size() == 0) {
+					System.out.println("게시물이 존재하지 않습니다.");
+					continue;
+				}
+				
 				System.out.printf("  번호 /    제목\n");
-				for (Article article : articles) {
+				for (Article article : foundArticles) {
 					System.out.printf("%4d / %10s\n", article.articleId, article.title);
 				}
 
