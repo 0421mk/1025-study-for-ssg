@@ -6,7 +6,7 @@ import java.util.List;
 import study.ssg.com.dto.Article;
 import study.ssg.com.dto.Member;
 
-public class Controller {
+public abstract class Controller {
 	public List<Article> articles;
 	public List<Member> members;
 	
@@ -14,4 +14,6 @@ public class Controller {
 		articles = new ArrayList<>();
 		members = new ArrayList<>();
 	}
+	
+	abstract public void doAction(String command, String actionMethodName);
 }

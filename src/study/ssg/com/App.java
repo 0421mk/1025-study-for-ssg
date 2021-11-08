@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import study.ssg.com.controller.ArticleController;
+import study.ssg.com.controller.Controller;
 import study.ssg.com.controller.MemberController;
 import study.ssg.com.dto.Article;
 import study.ssg.com.dto.Member;
@@ -26,36 +27,33 @@ public class App {
 		{
 			System.out.printf("명령어 입력: ");
 			String command = scanner.nextLine();
-
-			if (command.equals("article write")) {
-
-				articleController.doWrite();
-
-			} else if (command.startsWith("article list")) {
-				
-				articleController.showList(command);
-
-			} else if (command.startsWith("article detail ")) {
-
-				articleController.showDetail(command);
-
-			} else if (command.startsWith("article modify ")) {
-
-				articleController.doModify(command);
-
-			} else if (command.startsWith("article delete ")) {
-
-				articleController.doDelete(command);
-
-			} else if (command.equals("member join")) {
-				
-				memberController.doJoin();
-				
-			} else if (command.equals("system exit")) {
+			
+			if (command.equals("system exit")) {
 				break;
+			}
+			
+			String[] commandBits = command.split(" ");
+			
+			String controllerName = commandBits[0];
+			String actionMethodName = commandBits[1];
+			
+			Controller controller = null;
+			
+			if (commandBits.length <= 1) {
+				// 예외 처리
+			}
+			
+			// Front Controller (대분류)
+			if(controllerName.equals("article")) {
+				controller = articleController;
+			} else if(controllerName.equals("member")) {
+				controller = memberController;
 			} else {
 				System.out.println("잘못된 명령어입니다.");
 			}
+			
+			// 발작 버튼
+			controller.doAction(command, actionMethodName);
 		}
 
 		System.out.println("==== 프로그램 끝 ====");

@@ -13,6 +13,29 @@ public class ArticleController extends Controller {
 		this.scanner = scanner;
 	}
 
+	public void doAction(String command, String actionMethodName) {
+		switch (actionMethodName) {
+		case "write":
+			doWrite();
+			break;
+		case "list":
+			showList(command);
+			break;
+		case "detail":
+			showDetail(command);
+			break;
+		case "modify":
+			doModify(command);
+			break;
+		case "delete":
+			doDelete(command);
+			break;
+		default:
+			System.out.println("존재하지 않는 메서드입니다.");
+			break;
+		}
+	}
+
 	public void doWrite() {
 		// view
 		System.out.printf("제목: ");
@@ -144,26 +167,6 @@ public class ArticleController extends Controller {
 
 	}
 
-	public void makeTestData() {
-		System.out.println("테스트 데이터를 생성합니다.");
-
-		articles.add(new Article("title1", "body1"));
-		articles.add(new Article("title2", "body2"));
-		articles.add(new Article("title3", "body3"));
-	}
-
-	private Article getFoundArticleById(int foundId) {
-		Article foundArticle = null;
-
-		for (Article article : articles) {
-			if (article.articleId == foundId) {
-				foundArticle = article;
-			}
-		}
-
-		return foundArticle;
-	}
-
 	public void doDelete(String command) {
 
 		String input = command.substring("article delete ".length()).trim();
@@ -196,6 +199,26 @@ public class ArticleController extends Controller {
 			return;
 		}
 
+	}
+
+	public void makeTestData() {
+		System.out.println("테스트 데이터를 생성합니다.");
+
+		articles.add(new Article("title1", "body1"));
+		articles.add(new Article("title2", "body2"));
+		articles.add(new Article("title3", "body3"));
+	}
+
+	private Article getFoundArticleById(int foundId) {
+		Article foundArticle = null;
+
+		for (Article article : articles) {
+			if (article.articleId == foundId) {
+				foundArticle = article;
+			}
+		}
+
+		return foundArticle;
 	}
 
 }

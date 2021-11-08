@@ -10,6 +10,17 @@ public class MemberController extends Controller {
 	public MemberController(Scanner scanner) {
 		this.scanner = scanner;
 	}
+	
+	public void doAction(String command, String actionMethodName) {
+		switch (actionMethodName) {
+		case "join":
+			doJoin();
+			break;
+		default:
+			System.out.println("존재하지 않는 메서드입니다.");
+			break;
+		}
+	}
 
 	public void doJoin() {
 
