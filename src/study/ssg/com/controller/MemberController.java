@@ -2,6 +2,7 @@ package study.ssg.com.controller;
 
 import java.util.Scanner;
 
+import study.ssg.com.dto.Article;
 import study.ssg.com.dto.Member;
 
 public class MemberController extends Controller {
@@ -135,5 +136,12 @@ public class MemberController extends Controller {
 
 		System.out.println(member.name + "님이 회원가입 하셨습니다.");
 
+	}
+
+	public void makeTestData() {
+		System.out.println("회원 테스트 데이터를 생성합니다.");
+
+		members.add(new Member("admin", "admin", "관리자"));
+		members.add(new Member("user", "user", "유저"));
 	}
 }

@@ -22,6 +22,7 @@ public class App {
 		System.out.println("==== 프로그램 시작 ====");
 
 		articleController.makeTestData();
+		memberController.makeTestData();
 
 		while (true)
 
